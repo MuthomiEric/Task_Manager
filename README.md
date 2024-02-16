@@ -11,7 +11,12 @@
 - [Install Visual studio](https://docs.microsoft.com/en-us/visualstudio/install/install-visual-studio?view=vs-2022)
 
 # Installing SSMS
-- [Installation docs]https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16
+- [Installation docs](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16)
+
+# Database Design
+
+- [Database Design](https://dbdiagram.io/d/Task-Manager-65ce5722ac844320ae3e0ca2)
+
 
 ## Getting Started
 

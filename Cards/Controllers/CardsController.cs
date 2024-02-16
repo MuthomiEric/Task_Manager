@@ -16,6 +16,8 @@ namespace Cards.Controllers
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
+    [ProducesResponseType(typeof(string), StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
     public class CardsController : ControllerBase
     {
         private readonly IMapper _mapper;
@@ -36,6 +38,7 @@ namespace Cards.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(typeof(Pagination<CardToDisplayDto>), StatusCodes.Status200OK)]
         public async Task<ActionResult> Get([FromQuery] QueryParams queryParams, [FromQuery] CardFilters filters)
         {
             try
@@ -59,6 +62,8 @@ namespace Cards.Controllers
 
 
         [HttpGet("{id:guid}")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(CardToDisplayDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> Get(Guid id)
         {
             try
@@ -69,6 +74,9 @@ namespace Cards.Controllers
 
                 var card = await _cardRepository.GetSingleCardById<CardToDisplayDto>(id, response.isInAdminRole,
                     response.user.Id);
+
+                if (card is null)
+                    return NotFound("Card not found or you do not have access to this card");
 
                 return Ok(card);
             }
@@ -82,6 +90,7 @@ namespace Cards.Controllers
 
 
         [HttpPost]
+        [ProducesResponseType(typeof(CardToDisplayDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> Post([FromBody] CardToCreateDto cardDto)
         {
             try
@@ -98,7 +107,7 @@ namespace Cards.Controllers
 
                 await _cardRepository.CompleteAsync();
 
-                return Ok("Card added successfully");
+                return Ok(_mapper.Map<CardToDisplayDto>(card));
             }
             catch (Exception ex)
             {
@@ -110,6 +119,8 @@ namespace Cards.Controllers
 
 
         [HttpPut("{id:guid}")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(CardToDisplayDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> Put(Guid id, [FromBody] CardToEditDto cardDto)
         {
             try
@@ -137,6 +148,8 @@ namespace Cards.Controllers
         }
 
         [HttpPatch("{id:guid}")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(CardToDisplayDto), StatusCodes.Status200OK)]
         public async Task<ActionResult> Patch(Guid id, [FromBody] CardToPatchDto cardDto)
         {
             try
@@ -164,6 +177,8 @@ namespace Cards.Controllers
         }
 
         [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Delete(Guid id)
         {
             try
@@ -183,7 +198,7 @@ namespace Cards.Controllers
                     return Ok("Card deleted successfully");
                 }
 
-                return BadRequest("Card not found");
+                return NotFound("Card not found");
             }
             catch (Exception ex)
             {
