@@ -36,6 +36,23 @@ namespace Infrastructure.Services
 
             queryable = QueryBuilder(queryable, queryParams, filters, isAdmin, userId);
 
+            if (queryParams.SortFields != null && queryParams.SortFields.Any())
+            {
+                List<string> properties = new List<string>();
+
+                var props = typeof(TTarget).GetProperties();
+
+                foreach (var item in props)
+                {
+                    properties.Add(item.Name.ToLower());
+                }
+
+                foreach (var sortProperties in from item in queryParams.SortFields where properties.Contains(item.ToLower()) select new List<string> { item })
+                {
+                    sortProperties.ForEach(s => queryable = OrderingUtils.CallOrderBy(queryable, s, queryParams.Ascending));
+                }
+            }
+
             var count = queryable.Count();
 
             var results = (await queryable

@@ -164,11 +164,15 @@ namespace Cards.Controllers
         }
 
         [HttpDelete("{id:guid}")]
-        public ActionResult Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             try
             {
-                var card = _cardRepository.Get(id);
+                var response = await IdentityHelper.IsLoggedInUserActive(HttpContext);
+
+                if (response.user == null) return response.result;
+
+                var card = await _cardRepository.GetSingleCardById<Card>(id, response.isInAdminRole, response.user.Id);
 
                 if (card is not null)
                 {
