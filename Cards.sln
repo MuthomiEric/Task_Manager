@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cards", "Cards\Cards.csproj", "{D550EB2D-5A0C-4A44-AFE0-6D857092806A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{417C9DC3-7C7C-426D-9586-144C09EFD4DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{9C34D290-4CC5-469F-896E-F568FB764F94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D550EB2D-5A0C-4A44-AFE0-6D857092806A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D550EB2D-5A0C-4A44-AFE0-6D857092806A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D550EB2D-5A0C-4A44-AFE0-6D857092806A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D550EB2D-5A0C-4A44-AFE0-6D857092806A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417C9DC3-7C7C-426D-9586-144C09EFD4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417C9DC3-7C7C-426D-9586-144C09EFD4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417C9DC3-7C7C-426D-9586-144C09EFD4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417C9DC3-7C7C-426D-9586-144C09EFD4DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C34D290-4CC5-469F-896E-F568FB764F94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C34D290-4CC5-469F-896E-F568FB764F94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C34D290-4CC5-469F-896E-F568FB764F94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C34D290-4CC5-469F-896E-F568FB764F94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D13C89F6-B812-468F-89F7-7098406A09DD}
+	EndGlobalSection
+EndGlobal
