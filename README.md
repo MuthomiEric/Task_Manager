@@ -23,7 +23,7 @@
 
 ## Settings
 
-- You need to add these seetings to your appsettings.json
+- You need to add these settings to your appsettings.json
 
 ```
 	 "LogPath": "C:\\Temp\\Cards.Logs-.log",
